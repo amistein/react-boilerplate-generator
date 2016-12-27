@@ -2,23 +2,13 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import Main from './Main';
 
-
+import store from '../store';
 
 const App = () => {
   return (
-    <div className="container">
-      <div className="page-header text-center">
-        <h1>React Boilerplate Generator</h1>
-      </div>
-      <div className="row">
-        <div className="col-md-6">
-
-        </div>
-        <div className="col-md-6">
-
-        </div>
-      </div>
-    </div>
+    <Provider store={store}>
+      <Main />
+    </Provider>
   )
 }
 
