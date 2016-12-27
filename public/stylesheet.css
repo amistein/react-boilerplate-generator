@@ -1,10 +1,18 @@
+.container {
+  background-color: #F5F7FA;
+}
+
+.bg-white {
+  background-color: white;
+}
+
 .inlb {
   display: inline-block;
 }
 
 .chk-box {
   position: absolute;
-  top: 4px;
+  top: 25px;
 
 }
 
@@ -28,7 +36,7 @@
 .add-circle {
   position: absolute;
   top: 20px;
-  font-size: 18px;
+  font-size: 15px;
   cursor: pointer;
 }
 
@@ -38,4 +46,26 @@
 
 .pd-top-btm-sm {
   padding: 10px 0;
+}
+
+.pd-top-btm-md {
+  padding: 20px 0;
+}
+
+.pd-left-sm {
+  padding-left: 10px;
+}
+
+.pos-down-sm {
+  position: absolute;
+  top: 10px;
+}
+
+.ctnr-cntrd-md {
+  width: 350px;
+  margin: 35px auto;
+}
+
+.full-width {
+  width: 100%;
 }

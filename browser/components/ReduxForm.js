@@ -51,8 +51,14 @@ export default class ReduxForm extends React.Component {
           <Reducer key={index} num={index} value={reducer} onReducerChange={e => this.onReducerChange(e.target.value, index)}/>)}
         <div className="pos-rel pd-top-sm">
           <i className="material-icons add-circle" onClick={this.addReducer}>add_circle_outline</i>
-          <h4 className="mgn-left-md">Add Reducer</h4>
+          <h5 className="mgn-left-md">Add Reducer</h5>
         </div>
+        <div className="checkbox pos-rel">
+          <label>
+            <input type="checkbox" className="pos-down-sm"/><h4>Use React-Router</h4>
+          </label>
+        </div>
+      <h4>What Redux middleware would you like to use?</h4>
       </div>      
     );
   }

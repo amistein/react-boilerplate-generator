@@ -21489,9 +21489,9 @@
 	
 	var _reactRedux = __webpack_require__(179);
 	
-	var _Main = __webpack_require__(217);
+	var _MainContainer = __webpack_require__(231);
 	
-	var _Main2 = _interopRequireDefault(_Main);
+	var _MainContainer2 = _interopRequireDefault(_MainContainer);
 	
 	var _store = __webpack_require__(220);
 	
@@ -21503,7 +21503,7 @@
 	  return _react2.default.createElement(
 	    _reactRedux.Provider,
 	    { store: _store2.default },
-	    _react2.default.createElement(_Main2.default, null)
+	    _react2.default.createElement(_MainContainer2.default, null)
 	  );
 	};
 	
@@ -23743,8 +23743,6 @@
 	  value: true
 	});
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -23757,60 +23755,70 @@
 	
 	var _ReduxContainer2 = _interopRequireDefault(_ReduxContainer);
 	
+	var _ReactRouterContainer = __webpack_require__(227);
+	
+	var _ReactRouterContainer2 = _interopRequireDefault(_ReactRouterContainer);
+	
+	var _WebpackContainer = __webpack_require__(228);
+	
+	var _WebpackContainer2 = _interopRequireDefault(_WebpackContainer);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Main = function (_React$Component) {
-	  _inherits(Main, _React$Component);
-	
-	  function Main() {
-	    _classCallCheck(this, Main);
-	
-	    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this));
-	
-	    _this.state = {};
-	    return _this;
-	  }
-	
-	  _createClass(Main, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'container' },
+	exports.default = function (props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'container' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'page-header text-center' },
+	      _react2.default.createElement(
+	        'h1',
+	        null,
+	        'React Boilerplate Generator'
+	      )
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'ctnr-cntrd-md' },
+	      _react2.default.createElement(
+	        'form',
+	        { className: 'form-group' },
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'page-header text-center' },
-	          _react2.default.createElement(
-	            'h1',
-	            null,
-	            'React Boilerplate Generator'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-md-6' },
-	            _react2.default.createElement(_ExpressContainer2.default, null),
-	            _react2.default.createElement(_ReduxContainer2.default, null)
-	          ),
-	          _react2.default.createElement('div', { className: 'col-md-6' })
+	          'label',
+	          { className: 'text-center full-width' },
+	          'Project Name:',
+	          _react2.default.createElement('input', { type: 'text', className: 'form-control', value: props.projectName, onChange: props.changeName })
 	        )
-	      );
-	    }
-	  }]);
-	
-	  return Main;
-	}(_react2.default.Component);
-	
-	exports.default = Main;
+	      )
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'row' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'col-md-6' },
+	        _react2.default.createElement(_ExpressContainer2.default, null),
+	        _react2.default.createElement(_ReduxContainer2.default, null)
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'col-md-6' },
+	        _react2.default.createElement(_ReactRouterContainer2.default, null),
+	        _react2.default.createElement(_WebpackContainer2.default, null)
+	      )
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'ctnr-cntrd-md' },
+	      _react2.default.createElement(
+	        'button',
+	        { type: 'button', className: 'btn btn-success btn-lg btn-block' },
+	        'GENERATE CODE'
+	      )
+	    )
+	  );
+	};
 
 /***/ },
 /* 218 */,
@@ -23922,6 +23930,10 @@
 	
 	var _redux = __webpack_require__(190);
 	
+	var _projectReducer = __webpack_require__(229);
+	
+	var _projectReducer2 = _interopRequireDefault(_projectReducer);
+	
 	var _expressReducer = __webpack_require__(222);
 	
 	var _expressReducer2 = _interopRequireDefault(_expressReducer);
@@ -23929,6 +23941,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = (0, _redux.combineReducers)({
+	  project: _projectReducer2.default,
 	  express: _expressReducer2.default
 	});
 
@@ -24026,10 +24039,10 @@
 	exports.default = function (props) {
 	  return _react2.default.createElement(
 	    "div",
-	    { className: "pos-rel" },
+	    { className: "pos-rel bg-white pd-left-sm" },
 	    _react2.default.createElement(
 	      "h3",
-	      { className: "mgn-left-md" },
+	      { className: "mgn-left-md pd-top-btm-md" },
 	      props.name
 	    ),
 	    _react2.default.createElement("input", { type: "checkbox", className: "chk-box", onChange: props.checkboxClickHandle, checked: props.checked }),
@@ -24222,10 +24235,29 @@
 	            "add_circle_outline"
 	          ),
 	          _react2.default.createElement(
-	            "h4",
+	            "h5",
 	            { className: "mgn-left-md" },
 	            "Add Reducer"
 	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "checkbox pos-rel" },
+	          _react2.default.createElement(
+	            "label",
+	            null,
+	            _react2.default.createElement("input", { type: "checkbox", className: "pos-down-sm" }),
+	            _react2.default.createElement(
+	              "h4",
+	              null,
+	              "Use React-Router"
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "h4",
+	          null,
+	          "What Redux middleware would you like to use?"
 	        )
 	      );
 	    }
@@ -24235,6 +24267,240 @@
 	}(_react2.default.Component);
 	
 	exports.default = ReduxForm;
+
+/***/ },
+/* 227 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(179);
+	
+	var _Category = __webpack_require__(224);
+	
+	var _Category2 = _interopRequireDefault(_Category);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	function mapStateToProps(storeState) {
+	  return {};
+	}
+	
+	function mapDispatchToProps(dispatch) {
+	  return {};
+	}
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(function (_React$Component) {
+	  _inherits(_class, _React$Component);
+	
+	  function _class() {
+	    _classCallCheck(this, _class);
+	
+	    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this));
+	
+	    _this.state = { checked: false };
+	
+	    _this.checkboxClickHandle = _this.checkboxClickHandle.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(_class, [{
+	    key: 'checkboxClickHandle',
+	    value: function checkboxClickHandle() {
+	      this.setState({
+	        checked: !this.state.checked
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        _Category2.default,
+	        { name: 'React Router', checkboxClickHandle: this.checkboxClickHandle, checked: this.state.checked },
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'React Router Form Goes Here'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return _class;
+	}(_react2.default.Component));
+
+/***/ },
+/* 228 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(179);
+	
+	var _Category = __webpack_require__(224);
+	
+	var _Category2 = _interopRequireDefault(_Category);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	function mapStateToProps(storeState) {
+	  return {};
+	}
+	
+	function mapDispatchToProps(dispatch) {
+	  return {};
+	}
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(function (_React$Component) {
+	  _inherits(_class, _React$Component);
+	
+	  function _class() {
+	    _classCallCheck(this, _class);
+	
+	    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this));
+	
+	    _this.state = { checked: false };
+	
+	    _this.checkboxClickHandle = _this.checkboxClickHandle.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(_class, [{
+	    key: 'checkboxClickHandle',
+	    value: function checkboxClickHandle() {
+	      this.setState({
+	        checked: !this.state.checked
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        _Category2.default,
+	        { name: 'Webpack', checkboxClickHandle: this.checkboxClickHandle, checked: this.state.checked },
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'Webpack Form Goes Here'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return _class;
+	}(_react2.default.Component));
+
+/***/ },
+/* 229 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = projectReducer;
+	
+	var _actionTypes = __webpack_require__(230);
+	
+	var initialState = {
+	  name: ''
+	};
+	
+	function projectReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	  var action = arguments[1];
+	
+	  switch (action.type) {
+	    case _actionTypes.CHANGE_PROJECT_NAME:
+	      return Object.assign({}, state, { name: action.name });
+	    default:
+	      return state;
+	  }
+	}
+
+/***/ },
+/* 230 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var CHANGE_PROJECT_NAME = exports.CHANGE_PROJECT_NAME = 'CHANGE_PROJECT_NAME';
+
+/***/ },
+/* 231 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(179);
+	
+	var _actionTypes = __webpack_require__(230);
+	
+	var _Main = __webpack_require__(217);
+	
+	var _Main2 = _interopRequireDefault(_Main);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function mapStateToProps(storeState) {
+	  return {
+	    projectName: storeState.project.name
+	  };
+	}
+	
+	function mapDispatchToProps(dispatch) {
+	  return {
+	    changeName: function changeName(e) {
+	      dispatch({ type: _actionTypes.CHANGE_PROJECT_NAME, name: e.target.value });
+	    }
+	  };
+	}
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Main2.default);
 
 /***/ }
 /******/ ]);
