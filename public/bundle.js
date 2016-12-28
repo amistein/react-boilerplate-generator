@@ -24060,6 +24060,12 @@
 	
 	var _ReduxForm2 = _interopRequireDefault(_ReduxForm);
 	
+	var _actionTypes = __webpack_require__(218);
+	
+	var actions = _interopRequireWildcard(_actionTypes);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24069,11 +24075,23 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	function mapStateToProps(storeState) {
-	  return {};
+	  return {
+	    reducerNames: storeState.redux.reducerNames
+	  };
 	}
 	
 	function mapDispatchToProps(dispatch) {
-	  return {};
+	  return {
+	    changeReducer: function changeReducer(value, index) {
+	      dispatch({ type: actions.CHANGE_REDUCER, value: value, index: index });
+	    },
+	    addReducer: function addReducer() {
+	      dispatch({ type: actions.ADD_REDUCER });
+	    },
+	    removeReducer: function removeReducer(index) {
+	      dispatch({ type: actions.REMOVE_REDUCER, index: index });
+	    }
+	  };
 	}
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(function (_React$Component) {
@@ -24103,7 +24121,12 @@
 	      return _react2.default.createElement(
 	        _Category2.default,
 	        { name: 'Redux', checkboxClickHandle: this.checkboxClickHandle, checked: this.state.checked },
-	        _react2.default.createElement(_ReduxForm2.default, null)
+	        _react2.default.createElement(_ReduxForm2.default, {
+	          changeReducer: this.props.changeReducer,
+	          addReducer: this.props.addReducer,
+	          removeReducer: this.props.removeReducer,
+	          reducerNames: this.props.reducerNames
+	        })
 	      );
 	    }
 	  }]);
@@ -24121,19 +24144,11 @@
 	  value: true
 	});
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var Reducer = function Reducer(props) {
 	  return _react2.default.createElement(
@@ -24165,117 +24180,69 @@
 	  );
 	};
 	
-	var ReduxForm = function (_React$Component) {
-	  _inherits(ReduxForm, _React$Component);
+	exports.default = function (_ref) {
+	  var reducerNames = _ref.reducerNames,
+	      changeReducer = _ref.changeReducer,
+	      removeReducer = _ref.removeReducer,
+	      addReducer = _ref.addReducer;
 	
-	  function ReduxForm() {
-	    _classCallCheck(this, ReduxForm);
-	
-	    var _this = _possibleConstructorReturn(this, (ReduxForm.__proto__ || Object.getPrototypeOf(ReduxForm)).call(this));
-	
-	    _this.state = {
-	      reducerNames: ['']
-	    };
-	
-	    _this.addReducer = _this.addReducer.bind(_this);
-	    return _this;
-	  }
-	
-	  _createClass(ReduxForm, [{
-	    key: "addReducer",
-	    value: function addReducer() {
-	      this.setState({
-	        reducerNames: this.state.reducerNames.concat('')
+	  return _react2.default.createElement(
+	    "div",
+	    null,
+	    _react2.default.createElement(
+	      "h4",
+	      { className: "pd-top-btm-sm" },
+	      "Define your reducers:"
+	    ),
+	    reducerNames.map(function (reducer, index) {
+	      return _react2.default.createElement(Reducer, {
+	        key: index,
+	        num: index,
+	        value: reducer,
+	        onReducerChange: function onReducerChange(e) {
+	          return changeReducer(e.target.value, index);
+	        },
+	        onReducerRemove: function onReducerRemove() {
+	          return removeReducer(index);
+	        },
+	        additionalReducers: index > 0
 	      });
-	    }
-	  }, {
-	    key: "onReducerChange",
-	    value: function onReducerChange(value, index) {
-	      var newReducerNames = this.state.reducerNames.slice();
-	      newReducerNames[index] = value;
-	      this.setState({
-	        reducerNames: newReducerNames
-	      });
-	    }
-	  }, {
-	    key: "onReducerRemove",
-	    value: function onReducerRemove(index) {
-	      if (index > 0) {
-	        var newReducerNames = this.state.reducerNames.slice();
-	        newReducerNames.splice(index, 1);
-	        this.setState({
-	          reducerNames: newReducerNames
-	        });
-	      }
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      var _this2 = this;
-	
-	      return _react2.default.createElement(
-	        "div",
+	    }),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "pos-rel pd-top-sm" },
+	      _react2.default.createElement(
+	        "i",
+	        { className: "material-icons add-circle", onClick: addReducer },
+	        "add_circle_outline"
+	      ),
+	      _react2.default.createElement(
+	        "h5",
+	        { className: "mgn-left-md" },
+	        "Add Reducer"
+	      )
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "checkbox pos-rel" },
+	      _react2.default.createElement(
+	        "label",
 	        null,
-	        _react2.default.createElement(
-	          "h4",
-	          { className: "pd-top-btm-sm" },
-	          "Define your reducers:"
-	        ),
-	        this.state.reducerNames.map(function (reducer, index) {
-	          return _react2.default.createElement(Reducer, {
-	            key: index,
-	            num: index,
-	            value: reducer,
-	            onReducerChange: function onReducerChange(e) {
-	              return _this2.onReducerChange(e.target.value, index);
-	            },
-	            onReducerRemove: function onReducerRemove() {
-	              return _this2.onReducerRemove(index);
-	            },
-	            additionalReducers: index > 0
-	          });
-	        }),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "pos-rel pd-top-sm" },
-	          _react2.default.createElement(
-	            "i",
-	            { className: "material-icons add-circle", onClick: this.addReducer },
-	            "add_circle_outline"
-	          ),
-	          _react2.default.createElement(
-	            "h5",
-	            { className: "mgn-left-md" },
-	            "Add Reducer"
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "checkbox pos-rel" },
-	          _react2.default.createElement(
-	            "label",
-	            null,
-	            _react2.default.createElement("input", { type: "checkbox", className: "pos-down-sm" }),
-	            _react2.default.createElement(
-	              "h4",
-	              null,
-	              "Use React-Router"
-	            )
-	          )
-	        ),
+	        _react2.default.createElement("input", { type: "checkbox", className: "pos-down-sm" }),
 	        _react2.default.createElement(
 	          "h4",
 	          null,
-	          "What Redux middleware would you like to use?"
+	          "Use React-Router"
 	        )
-	      );
-	    }
-	  }]);
-	
-	  return ReduxForm;
-	}(_react2.default.Component);
-	
-	exports.default = ReduxForm;
+	      )
+	    ),
+	    _react2.default.createElement(
+	      "h4",
+	      null,
+	      "What Redux middleware would you like to use?"
+	    )
+	  );
+	};
 
 /***/ },
 /* 225 */
@@ -24449,7 +24416,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	exports.default = (0, _redux.createStore)(_rootReducer2.default);
+	exports.default = (0, _redux.createStore)(_rootReducer2.default, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 /***/ },
 /* 228 */
@@ -24471,11 +24438,16 @@
 	
 	var _expressReducer2 = _interopRequireDefault(_expressReducer);
 	
+	var _reduxReducer = __webpack_require__(231);
+	
+	var _reduxReducer2 = _interopRequireDefault(_reduxReducer);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = (0, _redux.combineReducers)({
 	  project: _projectReducer2.default,
-	  express: _expressReducer2.default
+	  express: _expressReducer2.default,
+	  redux: _reduxReducer2.default
 	});
 
 /***/ },
@@ -24524,6 +24496,48 @@
 	  var action = arguments[1];
 	
 	  switch (action.type) {
+	    default:
+	      return state;
+	  }
+	}
+
+/***/ },
+/* 231 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = reduxReducer;
+	
+	var _actionTypes = __webpack_require__(218);
+	
+	/* ------------------------------------------- ACTION CREATORS ----------------------------------------- */
+	
+	/* ------------------------------------------- REDUCER ----------------------------------------- */
+	
+	var initialState = {
+	  reducerNames: ['']
+	};
+	
+	function reduxReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	  var action = arguments[1];
+	
+	  var newReducerNames = void 0;
+	  switch (action.type) {
+	    case _actionTypes.CHANGE_REDUCER:
+	      newReducerNames = state.reducerNames.slice();
+	      newReducerNames[action.index] = action.value;
+	      return Object.assign({}, state, { reducerNames: newReducerNames });
+	    case _actionTypes.ADD_REDUCER:
+	      return Object.assign({}, state, { reducerNames: state.reducerNames.concat(['']) });
+	    case _actionTypes.REMOVE_REDUCER:
+	      newReducerNames = state.reducerNames.slice();
+	      newReducerNames.splice(action.index, 1);
+	      return Object.assign({}, state, { reducerNames: newReducerNames });
 	    default:
 	      return state;
 	  }
