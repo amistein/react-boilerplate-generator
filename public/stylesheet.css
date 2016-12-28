@@ -40,6 +40,13 @@
   cursor: pointer;
 }
 
+.remove-circle {
+  position: absolute;
+  top: 9px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
 .pd-top-sm {
   padding-top: 10px;
 }

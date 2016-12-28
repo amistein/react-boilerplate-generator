@@ -21489,11 +21489,11 @@
 	
 	var _reactRedux = __webpack_require__(179);
 	
-	var _MainContainer = __webpack_require__(231);
+	var _MainContainer = __webpack_require__(217);
 	
 	var _MainContainer2 = _interopRequireDefault(_MainContainer);
 	
-	var _store = __webpack_require__(220);
+	var _store = __webpack_require__(227);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
@@ -23747,19 +23747,73 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _ExpressContainer = __webpack_require__(219);
+	var _reactRedux = __webpack_require__(179);
+	
+	var _actionTypes = __webpack_require__(218);
+	
+	var _Main = __webpack_require__(219);
+	
+	var _Main2 = _interopRequireDefault(_Main);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function mapStateToProps(storeState) {
+	  return {
+	    projectName: storeState.project.name
+	  };
+	}
+	
+	function mapDispatchToProps(dispatch) {
+	  return {
+	    changeName: function changeName(e) {
+	      dispatch({ type: _actionTypes.CHANGE_PROJECT_NAME, name: e.target.value });
+	    }
+	  };
+	}
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Main2.default);
+
+/***/ },
+/* 218 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var CHANGE_PROJECT_NAME = exports.CHANGE_PROJECT_NAME = 'CHANGE_PROJECT_NAME';
+	var CHANGE_REDUCER = exports.CHANGE_REDUCER = 'CHANGE_REDUCER';
+	var ADD_REDUCER = exports.ADD_REDUCER = 'ADD_REDUCER';
+	var REMOVE_REDUCER = exports.REMOVE_REDUCER = 'REMOVE_REDUCER';
+
+/***/ },
+/* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _ExpressContainer = __webpack_require__(220);
 	
 	var _ExpressContainer2 = _interopRequireDefault(_ExpressContainer);
 	
-	var _ReduxContainer = __webpack_require__(225);
+	var _ReduxContainer = __webpack_require__(223);
 	
 	var _ReduxContainer2 = _interopRequireDefault(_ReduxContainer);
 	
-	var _ReactRouterContainer = __webpack_require__(227);
+	var _ReactRouterContainer = __webpack_require__(225);
 	
 	var _ReactRouterContainer2 = _interopRequireDefault(_ReactRouterContainer);
 	
-	var _WebpackContainer = __webpack_require__(228);
+	var _WebpackContainer = __webpack_require__(226);
 	
 	var _WebpackContainer2 = _interopRequireDefault(_WebpackContainer);
 	
@@ -23821,8 +23875,7 @@
 	};
 
 /***/ },
-/* 218 */,
-/* 219 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23839,11 +23892,11 @@
 	
 	var _reactRedux = __webpack_require__(179);
 	
-	var _Category = __webpack_require__(224);
+	var _Category = __webpack_require__(221);
 	
 	var _Category2 = _interopRequireDefault(_Category);
 	
-	var _ExpressForm = __webpack_require__(223);
+	var _ExpressForm = __webpack_require__(222);
 	
 	var _ExpressForm2 = _interopRequireDefault(_ExpressForm);
 	
@@ -23899,76 +23952,37 @@
 	}(_react2.default.Component));
 
 /***/ },
-/* 220 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _redux = __webpack_require__(190);
-	
-	var _rootReducer = __webpack_require__(221);
-	
-	var _rootReducer2 = _interopRequireDefault(_rootReducer);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = (0, _redux.createStore)(_rootReducer2.default);
-
-/***/ },
 /* 221 */
 /***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _redux = __webpack_require__(190);
-	
-	var _projectReducer = __webpack_require__(229);
-	
-	var _projectReducer2 = _interopRequireDefault(_projectReducer);
-	
-	var _expressReducer = __webpack_require__(222);
-	
-	var _expressReducer2 = _interopRequireDefault(_expressReducer);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = (0, _redux.combineReducers)({
-	  project: _projectReducer2.default,
-	  express: _expressReducer2.default
-	});
-
-/***/ },
-/* 222 */
-/***/ function(module, exports) {
 
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.default = expressReducer;
-	var initialState = {};
 	
-	function expressReducer() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-	  var action = arguments[1];
+	var _react = __webpack_require__(1);
 	
-	  switch (action.type) {
-	    default:
-	      return state;
-	  }
-	}
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = function (props) {
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "pos-rel bg-white pd-left-sm" },
+	    _react2.default.createElement(
+	      "h3",
+	      { className: "mgn-left-md pd-top-btm-md" },
+	      props.name
+	    ),
+	    _react2.default.createElement("input", { type: "checkbox", className: "chk-box", onChange: props.checkboxClickHandle, checked: props.checked }),
+	    props.checked ? props.children : null
+	  );
+	};
 
 /***/ },
-/* 223 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24021,37 +24035,7 @@
 	};
 
 /***/ },
-/* 224 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = function (props) {
-	  return _react2.default.createElement(
-	    "div",
-	    { className: "pos-rel bg-white pd-left-sm" },
-	    _react2.default.createElement(
-	      "h3",
-	      { className: "mgn-left-md pd-top-btm-md" },
-	      props.name
-	    ),
-	    _react2.default.createElement("input", { type: "checkbox", className: "chk-box", onChange: props.checkboxClickHandle, checked: props.checked }),
-	    props.checked ? props.children : null
-	  );
-	};
-
-/***/ },
-/* 225 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24068,11 +24052,11 @@
 	
 	var _reactRedux = __webpack_require__(179);
 	
-	var _Category = __webpack_require__(224);
+	var _Category = __webpack_require__(221);
 	
 	var _Category2 = _interopRequireDefault(_Category);
 	
-	var _ReduxForm = __webpack_require__(226);
+	var _ReduxForm = __webpack_require__(224);
 	
 	var _ReduxForm2 = _interopRequireDefault(_ReduxForm);
 	
@@ -24128,7 +24112,7 @@
 	}(_react2.default.Component));
 
 /***/ },
-/* 226 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24157,21 +24141,26 @@
 	    { className: "form-inline pd-top-sm" },
 	    _react2.default.createElement(
 	      "div",
-	      { className: "form-group" },
+	      { className: "form-group pos-rel" },
+	      props.additionalReducers ? _react2.default.createElement(
+	        "i",
+	        { className: "material-icons remove-circle", onClick: props.onReducerRemove },
+	        "remove_circle_outline"
+	      ) : null,
 	      _react2.default.createElement(
 	        "label",
-	        { htmlFor: "Reducer " + props.num },
+	        { className: "mgn-left-md" },
 	        "Reducer #",
-	        props.num + 1
-	      ),
-	      _react2.default.createElement("input", {
-	        type: "text",
-	        className: "form-control mgn-left-sm",
-	        id: "Reducer " + props.num,
-	        placeholder: "Name",
-	        value: props.value,
-	        onChange: props.onReducerChange
-	      })
+	        props.num + 1,
+	        _react2.default.createElement("input", {
+	          type: "text",
+	          className: "form-control mgn-left-sm",
+	          id: "Reducer " + props.num,
+	          placeholder: "Name",
+	          value: props.value,
+	          onChange: props.onReducerChange
+	        })
+	      )
 	    )
 	  );
 	};
@@ -24209,6 +24198,17 @@
 	      });
 	    }
 	  }, {
+	    key: "onReducerRemove",
+	    value: function onReducerRemove(index) {
+	      if (index > 0) {
+	        var newReducerNames = this.state.reducerNames.slice();
+	        newReducerNames.splice(index, 1);
+	        this.setState({
+	          reducerNames: newReducerNames
+	        });
+	      }
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
 	      var _this2 = this;
@@ -24222,9 +24222,18 @@
 	          "Define your reducers:"
 	        ),
 	        this.state.reducerNames.map(function (reducer, index) {
-	          return _react2.default.createElement(Reducer, { key: index, num: index, value: reducer, onReducerChange: function onReducerChange(e) {
+	          return _react2.default.createElement(Reducer, {
+	            key: index,
+	            num: index,
+	            value: reducer,
+	            onReducerChange: function onReducerChange(e) {
 	              return _this2.onReducerChange(e.target.value, index);
-	            } });
+	            },
+	            onReducerRemove: function onReducerRemove() {
+	              return _this2.onReducerRemove(index);
+	            },
+	            additionalReducers: index > 0
+	          });
 	        }),
 	        _react2.default.createElement(
 	          "div",
@@ -24269,7 +24278,7 @@
 	exports.default = ReduxForm;
 
 /***/ },
-/* 227 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24286,7 +24295,7 @@
 	
 	var _reactRedux = __webpack_require__(179);
 	
-	var _Category = __webpack_require__(224);
+	var _Category = __webpack_require__(221);
 	
 	var _Category2 = _interopRequireDefault(_Category);
 	
@@ -24346,7 +24355,7 @@
 	}(_react2.default.Component));
 
 /***/ },
-/* 228 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24363,7 +24372,7 @@
 	
 	var _reactRedux = __webpack_require__(179);
 	
-	var _Category = __webpack_require__(224);
+	var _Category = __webpack_require__(221);
 	
 	var _Category2 = _interopRequireDefault(_Category);
 	
@@ -24423,6 +24432,53 @@
 	}(_react2.default.Component));
 
 /***/ },
+/* 227 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _redux = __webpack_require__(190);
+	
+	var _rootReducer = __webpack_require__(228);
+	
+	var _rootReducer2 = _interopRequireDefault(_rootReducer);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = (0, _redux.createStore)(_rootReducer2.default);
+
+/***/ },
+/* 228 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _redux = __webpack_require__(190);
+	
+	var _projectReducer = __webpack_require__(229);
+	
+	var _projectReducer2 = _interopRequireDefault(_projectReducer);
+	
+	var _expressReducer = __webpack_require__(230);
+	
+	var _expressReducer2 = _interopRequireDefault(_expressReducer);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = (0, _redux.combineReducers)({
+	  project: _projectReducer2.default,
+	  express: _expressReducer2.default
+	});
+
+/***/ },
 /* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -24433,7 +24489,7 @@
 	});
 	exports.default = projectReducer;
 	
-	var _actionTypes = __webpack_require__(230);
+	var _actionTypes = __webpack_require__(218);
 	
 	var initialState = {
 	  name: ''
@@ -24455,52 +24511,23 @@
 /* 230 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var CHANGE_PROJECT_NAME = exports.CHANGE_PROJECT_NAME = 'CHANGE_PROJECT_NAME';
-
-/***/ },
-/* 231 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
+	exports.default = expressReducer;
+	var initialState = {};
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	function expressReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	  var action = arguments[1];
 	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRedux = __webpack_require__(179);
-	
-	var _actionTypes = __webpack_require__(230);
-	
-	var _Main = __webpack_require__(217);
-	
-	var _Main2 = _interopRequireDefault(_Main);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function mapStateToProps(storeState) {
-	  return {
-	    projectName: storeState.project.name
-	  };
+	  switch (action.type) {
+	    default:
+	      return state;
+	  }
 	}
-	
-	function mapDispatchToProps(dispatch) {
-	  return {
-	    changeName: function changeName(e) {
-	      dispatch({ type: _actionTypes.CHANGE_PROJECT_NAME, name: e.target.value });
-	    }
-	  };
-	}
-	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Main2.default);
 
 /***/ }
 /******/ ]);
