@@ -23985,7 +23985,7 @@
 /* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -23995,42 +23995,32 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var _Checkbox = __webpack_require__(233);
 	
-	var Option = function Option(props) {
-	  return _react2.default.createElement(
-	    "div",
-	    { className: "checkbox" },
-	    _react2.default.createElement(
-	      "label",
-	      null,
-	      _react2.default.createElement("input", { type: "checkbox" }),
-	      " ",
-	      props.middleware
-	    )
-	  );
-	};
+	var _Checkbox2 = _interopRequireDefault(_Checkbox);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var options = ['Static', 'Body Parser (JSON)', 'Body Parser (URL Encoded)', 'Morgan', 'Volleyball', 'Session'];
 	
 	exports.default = function () {
 	  return _react2.default.createElement(
-	    "div",
+	    'div',
 	    null,
 	    _react2.default.createElement(
-	      "h4",
+	      'h4',
 	      null,
-	      "What express middleware would you like to use?"
+	      'What express middleware would you like to use?'
 	    ),
 	    options.map(function (option) {
-	      return _react2.default.createElement(Option, { key: option, middleware: option });
+	      return _react2.default.createElement(_Checkbox2.default, { key: option, label: option });
 	    }),
 	    _react2.default.createElement(
-	      "h5",
-	      { className: "inlb" },
-	      "Which port should the server listen on?"
+	      'h5',
+	      { className: 'inlb' },
+	      'Which port should the server listen on?'
 	    ),
-	    _react2.default.createElement("input", { type: "text", className: "form-control inlb port-input", placeholder: "8080" })
+	    _react2.default.createElement('input', { type: 'text', className: 'form-control inlb port-input', placeholder: '8080' })
 	  );
 	};
 
@@ -24148,7 +24138,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _ReduxMiddleware = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./ReduxMiddleware\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _ReduxMiddleware = __webpack_require__(232);
 	
 	var _ReduxMiddleware2 = _interopRequireDefault(_ReduxMiddleware);
 	
@@ -24190,6 +24180,7 @@
 	      removeReducer = _ref.removeReducer,
 	      addReducer = _ref.addReducer;
 	
+	  var middleware = ['redux-logger', 'redux-thunk', 'example1', 'example2'];
 	  return _react2.default.createElement(
 	    'div',
 	    null,
@@ -24244,7 +24235,8 @@
 	      'h4',
 	      null,
 	      'What Redux middleware would you like to use?'
-	    )
+	    ),
+	    _react2.default.createElement(_ReduxMiddleware2.default, { middleware: middleware })
 	  );
 	};
 
@@ -24546,6 +24538,85 @@
 	      return state;
 	  }
 	}
+
+/***/ },
+/* 232 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Column = undefined;
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Checkbox = __webpack_require__(233);
+	
+	var _Checkbox2 = _interopRequireDefault(_Checkbox);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Column = exports.Column = function Column(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'col-md-6 col-sm-6' },
+	    props.rows.map(function (row) {
+	      return _react2.default.createElement(_Checkbox2.default, { key: row, label: row });
+	    })
+	  );
+	};
+	
+	exports.default = function (_ref) {
+	  var middleware = _ref.middleware;
+	
+	  var column1rows = middleware.filter(function (m, i) {
+	    return i % 2 === 0;
+	  });
+	  var column2rows = middleware.filter(function (m, i) {
+	    return i % 2 !== 0;
+	  });
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'clearfix' },
+	    _react2.default.createElement(Column, { rows: column1rows }),
+	    _react2.default.createElement(Column, { rows: column2rows })
+	  );
+	};
+
+/***/ },
+/* 233 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = function (_ref) {
+	  var label = _ref.label;
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "checkbox" },
+	    _react2.default.createElement(
+	      "label",
+	      null,
+	      _react2.default.createElement("input", { type: "checkbox" }),
+	      " ",
+	      label
+	    )
+	  );
+	};
 
 /***/ }
 /******/ ]);
