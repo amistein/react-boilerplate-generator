@@ -24138,7 +24138,7 @@
 /* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -24148,30 +24148,34 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _ReduxMiddleware = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./ReduxMiddleware\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	
+	var _ReduxMiddleware2 = _interopRequireDefault(_ReduxMiddleware);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Reducer = function Reducer(props) {
 	  return _react2.default.createElement(
-	    "form",
-	    { className: "form-inline pd-top-sm" },
+	    'form',
+	    { className: 'form-inline pd-top-sm' },
 	    _react2.default.createElement(
-	      "div",
-	      { className: "form-group pos-rel" },
+	      'div',
+	      { className: 'form-group pos-rel' },
 	      props.additionalReducers ? _react2.default.createElement(
-	        "i",
-	        { className: "material-icons remove-circle", onClick: props.onReducerRemove },
-	        "remove_circle_outline"
+	        'i',
+	        { className: 'material-icons remove-circle', onClick: props.onReducerRemove },
+	        'remove_circle_outline'
 	      ) : null,
 	      _react2.default.createElement(
-	        "label",
-	        { className: "mgn-left-md" },
-	        "Reducer #",
+	        'label',
+	        { className: 'mgn-left-md' },
+	        'Reducer #',
 	        props.num + 1,
-	        _react2.default.createElement("input", {
-	          type: "text",
-	          className: "form-control mgn-left-sm",
-	          id: "Reducer " + props.num,
-	          placeholder: "Name",
+	        _react2.default.createElement('input', {
+	          type: 'text',
+	          className: 'form-control mgn-left-sm',
+	          id: 'Reducer ' + props.num,
+	          placeholder: 'Name',
 	          value: props.value,
 	          onChange: props.onReducerChange
 	        })
@@ -24187,12 +24191,12 @@
 	      addReducer = _ref.addReducer;
 	
 	  return _react2.default.createElement(
-	    "div",
+	    'div',
 	    null,
 	    _react2.default.createElement(
-	      "h4",
-	      { className: "pd-top-btm-sm" },
-	      "Define your reducers:"
+	      'h4',
+	      { className: 'pd-top-btm-sm' },
+	      'Define your reducers:'
 	    ),
 	    reducerNames.map(function (reducer, index) {
 	      return _react2.default.createElement(Reducer, {
@@ -24209,37 +24213,37 @@
 	      });
 	    }),
 	    _react2.default.createElement(
-	      "div",
-	      { className: "pos-rel pd-top-sm" },
+	      'div',
+	      { className: 'pos-rel pd-top-sm' },
 	      _react2.default.createElement(
-	        "i",
-	        { className: "material-icons add-circle", onClick: addReducer },
-	        "add_circle_outline"
+	        'i',
+	        { className: 'material-icons add-circle', onClick: addReducer },
+	        'add_circle_outline'
 	      ),
 	      _react2.default.createElement(
-	        "h5",
-	        { className: "mgn-left-md" },
-	        "Add Reducer"
+	        'h5',
+	        { className: 'mgn-left-md' },
+	        'Add Reducer'
 	      )
 	    ),
 	    _react2.default.createElement(
-	      "div",
-	      { className: "checkbox pos-rel" },
+	      'div',
+	      { className: 'checkbox pos-rel' },
 	      _react2.default.createElement(
-	        "label",
+	        'label',
 	        null,
-	        _react2.default.createElement("input", { type: "checkbox", className: "pos-down-sm" }),
+	        _react2.default.createElement('input', { type: 'checkbox', className: 'pos-down-sm' }),
 	        _react2.default.createElement(
-	          "h4",
+	          'h4',
 	          null,
-	          "Use React-Router"
+	          'Use React-Router'
 	        )
 	      )
 	    ),
 	    _react2.default.createElement(
-	      "h4",
+	      'h4',
 	      null,
-	      "What Redux middleware would you like to use?"
+	      'What Redux middleware would you like to use?'
 	    )
 	  );
 	};

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReduxMiddleware from './ReduxMiddleware';
 
 const Reducer = props => {
   return (  
