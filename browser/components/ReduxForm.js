@@ -42,7 +42,7 @@ export default ({reducerNames, changeReducer, removeReducer, addReducer}) => {
       </div>
       <div className="checkbox pos-rel">
         <label>
-          <input type="checkbox" className="pos-down-sm" /><h4>Use React-Router</h4>
+          <input type="checkbox" className="pos-down-sm" /><h4>Use React Redux</h4>
         </label>
       </div>
       <h4>What Redux middleware would you like to use?</h4>

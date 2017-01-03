@@ -12,23 +12,20 @@ import {REMOVE_REDUCER} from '../actionTypes';
 
 /* ------------------------------------------- REDUCER ----------------------------------------- */
 
+// Can we switch reducer state to simple array? 
+
 const initialState = {
   reducerNames: ['']
 };
 
 export default function reduxReducer(state = initialState, action) {
-  let newReducerNames;
   switch (action.type) {
     case CHANGE_REDUCER:
-      newReducerNames = state.reducerNames.slice();
-      newReducerNames[action.index] = action.value;
-      return Object.assign({}, state, {reducerNames: newReducerNames});
+      return Object.assign({}, state, {reducerNames: state.reducerNames.map((r, i) => i === action.index ? action.value : r)});
     case ADD_REDUCER: 
-      return Object.assign({}, state, {reducerNames: state.reducerNames.concat([''])});
+      return Object.assign({}, state, {reducerNames: [...state.reducerNames, '']});
     case REMOVE_REDUCER: 
-      newReducerNames = state.reducerNames.slice();
-      newReducerNames.splice(action.index, 1)
-      return Object.assign({}, state, {reducerNames: newReducerNames});
+      return Object.assign({}, state, {reducerNames: state.reducerNames.filter((r, i) => i !== action.index)});
     default: 
       return state;
   }
