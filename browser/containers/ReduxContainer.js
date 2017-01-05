@@ -6,6 +6,7 @@ import * as actions from '../actionTypes';
 
 function mapStateToProps(storeState) {
   return {
+    selected: storeState.redux.selected,
     reducerNames: storeState.redux.reducerNames
   };
 }
@@ -22,36 +23,18 @@ function mapDispatchToProps(dispatch) {
 
     removeReducer(index) {
       dispatch({type: actions.REMOVE_REDUCER, index});
+    },
+
+    toggleCategory() {
+      dispatch({type: actions.TOGGLE_REDUX_CATEGORY});
     }
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  class extends React.Component {
-    constructor() {
-      super();
-
-      this.state = {checked: false};
-    
-      this.checkboxClickHandle = this.checkboxClickHandle.bind(this);
-  }
-
-    checkboxClickHandle() {
-      this.setState({
-        checked: !this.state.checked
-      });
-    }
-
-    render() {
-      return (
-        <Category name="Redux" checkboxClickHandle={this.checkboxClickHandle} checked={this.state.checked}>
-          <ReduxForm
-            changeReducer={this.props.changeReducer}
-            addReducer={this.props.addReducer}
-            removeReducer={this.props.removeReducer}
-            reducerNames={this.props.reducerNames}
-          />
-        </Category>
-      );
-    }
+export default connect(mapStateToProps, mapDispatchToProps)(props => {
+  return (
+    <Category name="Redux" containerProps={props} toggleCheckbox={props.toggleCategory}>
+      <ReduxForm />
+    </Category>
+  ); 
 });
