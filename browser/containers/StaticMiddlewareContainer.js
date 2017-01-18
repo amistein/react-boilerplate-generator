@@ -1,12 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import StaticMiddleware from '../components/StaticMiddleware';
 import Category from '../components/Category';
+import ExpandingOption from '../components/ExpandingOption';
+import InputsWithAdd from '../components/InputsWithAdd';
 import * as actions from '../actionTypes';
 
 function mapStateToProps(storeState) {
   return {
-    selected: storeState.expressMiddleware.static,
+    checked: storeState.expressMiddleware.static,
     paths: storeState.staticMiddleware
   };
 }
@@ -31,4 +32,14 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(StaticMiddleware);
+export default connect(mapStateToProps, mapDispatchToProps)(props =>
+  <ExpandingOption label="Static" checked={props.checked} onChange={props.toggleStaticMiddleware}>
+    <InputsWithAdd
+      inputs={props.paths}
+      label="File Path"
+      changeInput={props.changePath}
+      removeInput={props.removePath}
+      addInput={props.addPath}
+    /> 
+  </ExpandingOption>
+);

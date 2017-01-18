@@ -16,6 +16,10 @@ app.get('/', function(req, res, next) {
 
 app.use('/api', require('./api.router'));
 
+app.use(function(err, req, res, next) {
+  console.error(err);
+});
+
 app.listen(3000, function() {
     console.log('Server is listening on Port 3000');
 })

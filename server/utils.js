@@ -14,15 +14,15 @@ function generateRandomString() {
   return result;
 }
 
-function generateCode(filename, projectName, port, middleware) {
+function generateCode(appState, filename) {
   const output = fs.createWriteStream(__dirname + `/../generated_files/${filename}.zip`);
   const archive = archiver('zip', {
     store: true
   });
   
-  generateExpressFile(port, middleware)
+  generateExpressFile(appState)
   .then(file => {
-    archive.append(file, {name: `${projectName}/server/app.js`});
+    archive.append(file, {name: `${appState.project.name}/server/app.js`});
     archive.finalize();
     archive.pipe(output);
   });
@@ -30,21 +30,28 @@ function generateCode(filename, projectName, port, middleware) {
   return promisified.outputStreamClose(output);
 }
 
-function generateExpressFile(port, middleware) {
+function generateExpressFile(state) {
+  if (!state.express.selected) return Promise.resolve(null);
   return Promise.all([
     promisified.readFile(__dirname + '/../boilerplates/expressApp.txt'),
-    generateMiddleware(middleware),
-    promisified.readAndReplace(__dirname + '/../boilerplates/expressListen.txt', /PORT/g, port),
+    generateExpressMiddleware(state),
+    promisified.readAndReplace(__dirname + '/../boilerplates/expressListen.txt', /PORT/g, state.express.port),
   ])
-  .then(files => files.join('\n'));
+  .then(snippets => snippets.join('\n'));
 }
 
-function generateMiddleware(middleware) {
+function generateExpressMiddleware(state) {
   let result = '';
-  middleware.forEach(m => {
-    result += `app.use(require(${m}));\n`;
-  });
+  if (state.expressMiddleware.static) result += generateStaticMiddleware(state.staticMiddleware);
   return Promise.resolve(result);
+}
+
+function generateStaticMiddleware(paths) {
+  let result = '';
+  paths.forEach(path => {
+    if (path) result += `app.use(express.static('${path}'));\n`
+  });
+  return result;
 }
 
 module.exports = {

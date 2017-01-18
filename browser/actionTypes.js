@@ -10,9 +10,12 @@ export const TOGGLE_EXPRESS_MIDDLEWARE = 'TOGGLE_EXPRESS_MIDDLEWARE';
 
 // Static Middleware
 
-// export const TOGGLE_STATIC_MIDDLEWARE = 'TOGGLE_STATIC_MIDDLEWARE';
 export const CHANGE_PATH = 'CHANGE_PATH';
 export const ADD_PATH = 'ADD_PATH';
 export const REMOVE_PATH = 'REMOVE_PATH';
+
+// Body Parser = JSON
+
+export const TOGGLE_BPJ_OPTION = 'TOGGLE_BPJ_OPTION'; 
 
 export const CODE_GENERATED = 'CODE_GENERATED';

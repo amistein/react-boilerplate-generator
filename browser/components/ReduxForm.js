@@ -1,5 +1,5 @@
 import React from 'react';
-import ReduxMiddleware from './ReduxMiddleware';
+import TwoColumnOptions from './TwoColumnOptions';
 
 const Reducer = props => {
   return (
@@ -46,7 +46,7 @@ export default ({reducerNames, changeReducer, removeReducer, addReducer}) => {
         </label>
       </div>
       <h4>What Redux middleware would you like to use?</h4>
-      <ReduxMiddleware middleware={middleware} />
+      <TwoColumnOptions options={middleware} />
     </div>
   )
 };

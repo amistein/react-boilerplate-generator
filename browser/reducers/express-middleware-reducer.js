@@ -9,7 +9,8 @@ function toggleExpressMiddleware(middleware) {
 
 
 const initialState = {
-  static: false
+  static: false,
+  bodyParserJson: false
 };
 
 export default function expressReducer(state = initialState, action) {

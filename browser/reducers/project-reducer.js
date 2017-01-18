@@ -1,3 +1,5 @@
+import axios from 'axios';
+import {replaceWithDefaults} from '../utils';
 import {CHANGE_PROJECT_NAME} from '../actionTypes';
 import {CODE_GENERATED} from '../actionTypes';
 
@@ -6,9 +8,15 @@ import {CODE_GENERATED} from '../actionTypes';
 
 /* --- DISPATCHERS --- */
 
-export function generateCodeDispatcher() {
+export function generateCodeDispatcher(state) {
+  const stateWithDefaults = replaceWithDefaults(state);
   return dispatch => {
-    dispatch({type: CODE_GENERATED});
+    axios.post('/api/generateCode', stateWithDefaults)
+    .then(res => res.data)
+    .then(resObj => {
+      window.location.assign(`/api/downloadCode/${resObj.fileName}/${resObj.projName}`);
+      dispatch({type: CODE_GENERATED});
+    });
   };
 }
 
