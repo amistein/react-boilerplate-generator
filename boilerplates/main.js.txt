@@ -1,0 +1,19 @@
+import React from 'react'; 
+${react-router-import}
+import {render} from 'react-dom';
+${redux-provider-import}
+
+${redux-store-import}
+
+const Main = () => 
+  ${redux-provider-opening}
+    ${react-router-router-opening}
+      ${react-router-route-opening}
+  <div>
+    <h1 style={{textAlign: center}}>Sample React App</h1>
+  </div>
+      ${react-router-route-opening}
+    ${react-router-router-closing}
+  ${redux-provider-closing}
+
+render(<Main/>, document.getElementById('app'));
