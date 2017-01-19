@@ -5,6 +5,9 @@ import expressMiddlewareReducer from './express-middleware-reducer';
 import staticMiddlewareReducer from './static-middleware-reducer';
 import bodyParserJsonReducer from './bodyParserJson-reducer';
 import reduxReducer from './redux-reducer';
+import reactRouterReducer from './react-router-reducer';
+import webpackReducer from './webpack-reducer';
+import resourcesReducer from './resources-reducer';
 
 export default combineReducers({
   project: projectReducer,
@@ -12,5 +15,8 @@ export default combineReducers({
   expressMiddleware: expressMiddlewareReducer,
   staticMiddleware: staticMiddlewareReducer,  
   bodyParserJson: bodyParserJsonReducer,
-  redux: reduxReducer
+  redux: reduxReducer,
+  reactRouter: reactRouterReducer,
+  webpack: webpackReducer,
+  resources: resourcesReducer
 });

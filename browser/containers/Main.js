@@ -3,6 +3,7 @@ import ExpressContainer from './ExpressContainer';
 import ReduxContainer from './ReduxContainer';
 import ReactRouterContainer from './ReactRouterContainer';
 import WebpackContainer from './WebpackContainer';
+import AddResourcesContainer from '../containers/AddResourcesContainer';
 
 export default ({storeState, projectName, changeName, generateCode}) => {
   return (
@@ -23,10 +24,13 @@ export default ({storeState, projectName, changeName, generateCode}) => {
           <ReduxContainer/>  
         </div>
         <div className="col-md-6">
-         {
-          // <ReactRouterContainer/>
-          // <WebpackContainer/>
-         }
+          <ReactRouterContainer/>
+          <WebpackContainer/>
+        </div>
+      </div>
+      <div className="row pd-sides-md">
+        <div className="col-md-12">
+          <AddResourcesContainer/>
         </div>
       </div>
       <div className="ctnr-cntrd-md">

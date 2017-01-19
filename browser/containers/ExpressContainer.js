@@ -2,8 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Category from '../components/Category';
 import ExpressForm from '../components/ExpressForm';
-import {TOGGLE_EXPRESS_CATEGORY} from '../actionTypes';
-import {CHANGE_PORT} from '../actionTypes';
+import * as actions from '../actionTypes';
 
 function mapStateToProps(storeState) {
   return {
@@ -15,11 +14,11 @@ function mapStateToProps(storeState) {
 function mapDispatchToProps(dispatch) {
   return {
     toggleCategory: function() {
-      dispatch({type: TOGGLE_EXPRESS_CATEGORY});
+      dispatch({type: actions.TOGGLE_EXPRESS_CATEGORY});
     },
 
     changePort: function(e) {
-      dispatch({type: CHANGE_PORT, port: e.target.value});
+      dispatch({type: actions.CHANGE_PORT, port: e.target.value});
     }
   };
 }
