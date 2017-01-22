@@ -2,6 +2,7 @@ const fs = require('fs');
 const archiver = require('archiver');
 const promisified = require('./promisified');
 const reactCode = require('./generate_code/react');
+const reduxCode = require('./generate_code/redux');
 
 function generateRandomString() {
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -23,11 +24,15 @@ function generateCode(appState, filename) {
 
   Promise.all([
     generateExpressFile(appState),
-    reactCode.generateMainReactFile(appState)
+    reactCode.generateMainReactFile(appState),
+    reduxCode.generateContainers(appState, archive)
   ])
   .then(([expressFile, mainReactFile]) => {
     archive.append(expressFile, {name: `${appState.project.name}/server/app.js`});
     archive.append(mainReactFile, {name: `${appState.project.name}/app/main.js`});
+    // containers.forEach(container => {
+    //   archive.append(container.file, {name: `${appState.project.name}/app/containers/${container.name}.js`});
+    // });
     archive.finalize();
     archive.pipe(output);
   })

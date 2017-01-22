@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import ${component-name} from '../components/${component-name}';
+import COMPONENT_NAME from '../components/COMPONENT_NAME';
 
 function mapStateToProps(storeState) {
   return {};
@@ -10,4 +10,4 @@ function mapDispatchToProps(dispatch) {
   return {};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (${component-name}); 
+export default connect(mapStateToProps, mapDispatchToProps) (COMPONENT_NAME); 
