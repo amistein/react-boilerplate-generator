@@ -14,12 +14,15 @@ function generateCode(appState, filename) {
   Promise.all([
     expressCode.generateExpressFile(appState, archive),
     reactCode.generateMainReactFile(appState),
+    reduxCode.generateStoreFile(),
     reduxCode.generateContainers(appState, archive),
-    reduxCode.generateReducers(appState, archive)
+    reduxCode.generateReducers(appState, archive),
+    generateIndexFile(archive, appState.project.name)
   ])
-  .then(([expressFile, mainReactFile]) => {
+  .then(([expressFile, mainReactFile, storeFile]) => {
     archive.append(expressFile, {name: `${appState.project.name}/server/app.js`});
     archive.append(mainReactFile, {name: `${appState.project.name}/app/main.js`});
+    archive.append(storeFile, {name: `${appState.project.name}/app/store.js`});
     archive.finalize();
     archive.pipe(output);
   })
@@ -27,6 +30,14 @@ function generateCode(appState, filename) {
 
   return promisified.outputStreamClose(output);
 }
+
+function generateIndexFile(archiveFile, projName) {
+  return promisified.readFile(__dirname + '/../../boilerplates/index.html.txt')
+  .then(file => file.replace('PROJECT_NAME', projName))
+  .then(file => archiveFile.append(file, {name: `${projName}/public/index.html`}))
+  .catch(err => console.log('generateIndexFile Error: ' + err));
+}
+
 
 module.exports = {
   generateCode

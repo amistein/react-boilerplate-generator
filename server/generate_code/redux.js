@@ -11,6 +11,11 @@ funcs.generateReducers = (state, archiveFile) =>  {
   .then(reducerFile => createReducersArray(reducerFile, state, archiveFile));
 };
 
+funcs.generateStoreFile = () => {
+  return promisified.readFile(__dirname + '/../../boilerplates/storeWithMiddleware.txt')
+  .catch(err => console.log('generateStoreFile Error: ' + err));
+};
+
 function createContainersArray(containerFile, state, archiveFile) {
   const regex = new RegExp('COMPONENT_NAME', 'g');
   state.resources.forEach(resource => {
