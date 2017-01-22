@@ -10,7 +10,7 @@ export default props => {
       <div className="well well-lg pos-rel">
         <div className="row">
           <span className="glyphicon glyphicon glyphicon-remove remove-resource" aria-hidden="true" onClick={props.removeResource}></span>
-          <form className="form-inline mgn-sm">
+          <form className="form-inline mgn-sm" onSubmit={e => {e.preventDefault()}}>
             <div className="form-group">
               <label>Resource Name
                 <input type="text" className="form-control mgn-left-sm" value={props.inputValue} onChange={props.changeResourceName}/>

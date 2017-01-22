@@ -1,6 +1,7 @@
 const fs = require('fs');
 const archiver = require('archiver');
 const promisified = require('./promisified');
+const reactCode = require('./generate_code/react');
 
 function generateRandomString() {
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -19,13 +20,18 @@ function generateCode(appState, filename) {
   const archive = archiver('zip', {
     store: true
   });
-  
-  generateExpressFile(appState)
-  .then(file => {
-    archive.append(file, {name: `${appState.project.name}/server/app.js`});
+
+  Promise.all([
+    generateExpressFile(appState),
+    reactCode.generateMainReactFile(appState)
+  ])
+  .then(([expressFile, mainReactFile]) => {
+    archive.append(expressFile, {name: `${appState.project.name}/server/app.js`});
+    archive.append(mainReactFile, {name: `${appState.project.name}/app/main.js`});
     archive.finalize();
     archive.pipe(output);
-  });
+  })
+  .catch(err => console.log('Generate Code Error: ' + err));
 
   return promisified.outputStreamClose(output);
 }

@@ -1,19 +1,18 @@
 import React from 'react'; 
-${react-router-import}
-import {render} from 'react-dom';
-${redux-provider-import}
+REACT_ROUTER_IMPORT
+import {render} from 'react_dom';
+REDUX_PROVIDER_IMPORT
 
-${redux-store-import}
+REDUX_STORE_IMPORT
+import Main from '../components/Main';
 
 const Main = () => 
-  ${redux-provider-opening}
-    ${react-router-router-opening}
-      ${react-router-route-opening}
-  <div>
-    <h1 style={{textAlign: center}}>Sample React App</h1>
-  </div>
-      ${react-router-route-opening}
-    ${react-router-router-closing}
-  ${redux-provider-closing}
+  REDUX_PROVIDER_OPENING
+    REACT_ROUTER_ROUTER_OPENING
+      REACT_ROUTER_ROUTE_OPENING
+        MAIN_REACT_BODY
+      REACT_ROUTER_ROUTE_CLOSING
+    REACT_ROUTER_ROUTER_CLOSING
+  REDUX_PROVIDER_CLOSING
 
 render(<Main/>, document.getElementById('app'));
