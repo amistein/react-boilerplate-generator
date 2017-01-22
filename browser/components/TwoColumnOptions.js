@@ -4,7 +4,7 @@ import Checkbox from './Checkbox';
 export const Column = props => {
   return (
       <div className="col-md-6 col-sm-6">
-        {props.rows.map(row => <Checkbox key={row} label={row} onChange={() => props.onCheckboxClick(row)}/>)}
+        {props.rows.map(row => <Checkbox key={row} label={row.label} onChange={() => props.onCheckboxClick(row.name)}/>)}
       </div>
   );
 }

@@ -22,8 +22,9 @@ const Reducer = props => {
   );
 };
 
-export default ({reducerNames, changeReducer, removeReducer, addReducer}) => {
-  const middleware = ['redux-logger', 'redux-thunk', 'example1', 'example2'];
+export default ({reducerNames, changeReducer, removeReducer, addReducer, onCheckboxClick}) => {
+  const middleware = [{label: 'redux-logger', name: 'reduxLogger'}, {label: 'redux-thunk', name: 'reduxThunk'}];
+
   return (
     <div>
       <h4 className="pd-top-btm-sm">Define your reducers:</h4>
@@ -41,7 +42,7 @@ export default ({reducerNames, changeReducer, removeReducer, addReducer}) => {
         <h5 className="mgn-left-md">Add Reducer</h5>
       </div>
       <h4>What Redux middleware would you like to use?</h4>
-      <TwoColumnOptions options={middleware} />
+      <TwoColumnOptions options={middleware} onCheckboxClick={onCheckboxClick}/>
     </div>
   )
 };

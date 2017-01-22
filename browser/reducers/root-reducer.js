@@ -8,6 +8,7 @@ import reduxReducer from './redux-reducer';
 import reactRouterReducer from './react-router-reducer';
 import webpackReducer from './webpack-reducer';
 import resourcesReducer from './resources-reducer';
+import reduxMiddlewareReducer from './redux-middleware-reducer';
 
 export default combineReducers({
   project: projectReducer,
@@ -17,6 +18,7 @@ export default combineReducers({
   bodyParserJson: bodyParserJsonReducer,
   redux: reduxReducer,
   reactRouter: reactRouterReducer,
+  reduxMiddleware: reduxMiddlewareReducer,
   webpack: webpackReducer,
   resources: resourcesReducer
 });

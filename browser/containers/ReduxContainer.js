@@ -27,6 +27,10 @@ function mapDispatchToProps(dispatch) {
 
     toggleCategory() {
       dispatch({type: actions.TOGGLE_REDUX_CATEGORY});
+    },
+
+    onCheckboxClick(middleware) {
+      dispatch({type: actions.TOGGLE_REDUX_MIDDLEWARE, middleware});
     }
   };
 }
