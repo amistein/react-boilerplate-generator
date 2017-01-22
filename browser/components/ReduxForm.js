@@ -40,11 +40,6 @@ export default ({reducerNames, changeReducer, removeReducer, addReducer}) => {
         <i className="material-icons add-circle" onClick={addReducer}>add_circle_outline</i>
         <h5 className="mgn-left-md">Add Reducer</h5>
       </div>
-      <div className="checkbox pos-rel">
-        <label>
-          <input type="checkbox" className="pos-down-sm" /><h4>Use React Redux</h4>
-        </label>
-      </div>
       <h4>What Redux middleware would you like to use?</h4>
       <TwoColumnOptions options={middleware} />
     </div>

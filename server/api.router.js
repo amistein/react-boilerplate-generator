@@ -2,10 +2,12 @@ const fs = require('fs');
 const express = require('express');
 const router = express.Router();
 const utils = require('./utils');
+const code = require('./generate_code');
 
 router.post('/code', function(req, res, next) {
   const randomFileName = utils.generateRandomString();
-  utils.generateCode(req.body, randomFileName)
+  console.log('code:', code);
+  code.generateCode(req.body, randomFileName)
   .then(() => {
     res.json({fileName: randomFileName + '.zip', projName: req.body.project.name});
   })
