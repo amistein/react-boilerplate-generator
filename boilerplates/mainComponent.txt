@@ -1,0 +1,9 @@
+import React from 'react';
+
+export default props => {
+  return (
+    <div>
+      <h1 style={{textAlign: center}}>Sample React App</h1>
+    </div>
+  );
+}

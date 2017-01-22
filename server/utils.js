@@ -25,14 +25,12 @@ function generateCode(appState, filename) {
   Promise.all([
     generateExpressFile(appState),
     reactCode.generateMainReactFile(appState),
-    reduxCode.generateContainers(appState, archive)
+    reduxCode.generateContainers(appState, archive),
+    reduxCode.generateReducers(appState, archive)
   ])
   .then(([expressFile, mainReactFile]) => {
     archive.append(expressFile, {name: `${appState.project.name}/server/app.js`});
     archive.append(mainReactFile, {name: `${appState.project.name}/app/main.js`});
-    // containers.forEach(container => {
-    //   archive.append(container.file, {name: `${appState.project.name}/app/containers/${container.name}.js`});
-    // });
     archive.finalize();
     archive.pipe(output);
   })

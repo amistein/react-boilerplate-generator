@@ -2,7 +2,7 @@ import * as actions from '../actionTypes';
 
 const initialState = [];
 
-export default function ${reducerName}Reducer(state = initialState, action) {
+export default function REDUCER_NAMEReducer(state = initialState, action) {
   switch (action.type) {
     default:
       return state;
