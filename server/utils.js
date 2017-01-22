@@ -32,12 +32,9 @@ function generateCode(appState, filename) {
 
 function generateExpressFile(state) {
   if (!state.express.selected) return Promise.resolve(null);
-  return Promise.all([
-    promisified.readFile(__dirname + '/../boilerplates/expressApp.txt'),
-    generateExpressMiddleware(state),
-    promisified.readAndReplace(__dirname + '/../boilerplates/expressListen.txt', /PORT/g, state.express.port),
-  ])
-  .then(snippets => snippets.join('\n'));
+  else return promisified.readFile(__dirname + '/../boilerplates/server.txt')
+  .then(file => generatePort(file, state.express.port))
+  .then(file => generateExpressRouters(file, state.resources));
 }
 
 function generateExpressMiddleware(state) {
@@ -52,6 +49,22 @@ function generateStaticMiddleware(paths) {
     if (path) result += `app.use(express.static('${path}'));\n`
   });
   return result;
+}
+
+function generatePort(file, port) {
+  const regex = new RegExp('PORT', 'g');
+  return file.replace(regex, port);
+}
+
+function generateExpressRouters(file, resources) {
+  const routers = [];
+  resources.forEach(resource => {
+    if (resource.express) {
+      const name = resource.name;
+      routers.push(`app.use('/${name}', require('/${name}');`);
+    }
+  });
+  return file.replace('EXPRESS-ROUTERS', routers.join('\n'));
 }
 
 module.exports = {

@@ -11,10 +11,10 @@ import {CODE_GENERATED} from '../actionTypes';
 export function generateCodeDispatcher(state) {
   const stateWithDefaults = replaceWithDefaults(state);
   return dispatch => {
-    axios.post('/api/generateCode', stateWithDefaults)
+    axios.post('/api/code', stateWithDefaults)
     .then(res => res.data)
     .then(resObj => {
-      window.location.assign(`/api/downloadCode/${resObj.fileName}/${resObj.projName}`);
+      window.location.assign(`/api/code/${resObj.fileName}/${resObj.projName}`);
       dispatch({type: CODE_GENERATED});
     });
   };
