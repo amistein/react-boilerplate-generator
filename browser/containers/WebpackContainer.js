@@ -17,10 +17,13 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
+const Body = props => 
+  <p className="rr-p">Ability to choose Webpack config options coming soon!</p>;
+
 export default connect(mapStateToProps, mapDispatchToProps)(props => {
   return (
     <Category name="Webpack" containerProps={props} checked={props.selected} toggleCheckbox={props.toggleCategory}>
-      <h3>Webpack Form Goes Here</h3>
+      <Body/>
     </Category>
   );
 });

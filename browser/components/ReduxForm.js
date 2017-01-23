@@ -41,7 +41,7 @@ export default ({reducerNames, changeReducer, removeReducer, addReducer, onCheck
         <i className="material-icons add-circle" onClick={addReducer}>add_circle_outline</i>
         <h5 className="mgn-left-md">Add Reducer</h5>
       </div>
-      <h4>What Redux middleware would you like to use?</h4>
+      <h4 className="pd-top-md">What Redux middleware would you like to use?</h4>
       <TwoColumnOptions options={middleware} onCheckboxClick={onCheckboxClick}/>
     </div>
   )

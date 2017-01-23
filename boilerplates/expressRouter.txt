@@ -4,4 +4,4 @@ router.get('/', (req, res, next) => {
   res.sendStatus(200);
 });
 
-export default router;
+module.exports = router;

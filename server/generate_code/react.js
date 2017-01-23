@@ -16,7 +16,7 @@ function generateReactRouter(file, reactRouter) {
     REACT_ROUTER_IMPORT: `import {Router, Route, browserHistory} from 'react-router';`,
     REACT_ROUTER_ROUTER_OPENING: '<Router history={browserHistory}>',
     REACT_ROUTER_ROUTER_CLOSING: '</Router>',
-    REACT_ROUTER_ROUTE_OPENING: '<Route path="/" component={Main}>',
+    REACT_ROUTER_ROUTE_OPENING: '<Route path="/" component={MainComponent}>',
     REACT_ROUTER_ROUTE_CLOSING: '</Route>'
   };
 
@@ -37,15 +37,21 @@ function generateRedux(file, redux) {
 }
 
 function generateRoutes(file, reactRouter, resources) {
-  if (!reactRouter) return file.replace('MAIN_REACT_BODY', '<Main/>');
+  if (!reactRouter) {
+    file = file.replace('CC_IMPORTS', '');
+    return file.replace('MAIN_REACT_BODY', '<MainComponent/>');  
+  } 
   const routes = [];
+  const imports = [];
   resources.forEach(resource => {
     if (resource.reactRouter) {
       const name = resource.name;
       routes.push(`<Route path='/${name}' component={${name}${resource.container ? 'Container' : ''}}/>`);
+      imports.push(`import ${name}${resource.container ? 'Container' : ''} from './${resource.container ? 'containers' : 'components'}/${name}';`);
     }
   });
-  return file.replace('MAIN_REACT_BODY', routes.join('\n'));
+  file = file.replace('CC_IMPORTS', imports.join('\n'));
+  return file.replace('MAIN_REACT_BODY', routes.join('\n        '));
 }
 
 module.exports = funcs;

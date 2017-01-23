@@ -61,6 +61,14 @@
   padding-top: 10px;
 }
 
+.pd-top-md {
+  padding-top: 20px;
+}
+
+.pd-top-lg {
+  padding-top: 30px;
+}
+
 .pd-top-btm-sm {
   padding: 10px 0;
 }
@@ -86,7 +94,7 @@
 }
 
 .pd-sides-md {
-  padding: 0 20px;
+  padding: 30px 20px;
 }
 
 .pos-down-sm {
@@ -108,4 +116,8 @@
   top: 10px;
   right: 10px;
   cursor: pointer;
+}
+
+.rr-p {
+  font-weight: bold;
 }

@@ -35,8 +35,8 @@ function generateExpressRouters(expressFile, state, routerFile, archiveFile) {
   state.resources.forEach(resource => {
     if (resource.express) {
       const name = resource.name;
-      routerMiddlewares.push(`app.use('/${name}', require('/${name}');`);
-      archiveFile.append(routerFile, {name: `${state.project.name}/server/${resource.name}.router.js`});
+      routerMiddlewares.push(`app.use('/${name}', require('./${name}'));`);
+      archiveFile.append(routerFile, {name: `${state.project.name}/server/${resource.name}.js`});
     }
   });
   return expressFile.replace('EXPRESS-ROUTERS', routerMiddlewares.join('\n'));

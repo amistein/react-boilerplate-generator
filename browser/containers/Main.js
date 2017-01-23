@@ -21,10 +21,10 @@ export default ({storeState, projectName, changeName, generateCode}) => {
       <div className="row">
         <div className="col-md-6">
           <ExpressContainer/>
-          <ReduxContainer/>  
+          <ReactRouterContainer/>
         </div>
         <div className="col-md-6">
-          <ReactRouterContainer/>
+          <ReduxContainer/>  
           <WebpackContainer/>
         </div>
       </div>

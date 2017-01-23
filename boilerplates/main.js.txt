@@ -1,10 +1,11 @@
 import React from 'react'; 
 REACT_ROUTER_IMPORT
-import {render} from 'react_dom';
+import {render} from 'react-dom';
 REDUX_PROVIDER_IMPORT
 
 REDUX_STORE_IMPORT
-import Main from '../components/Main';
+import MainComponent from './components/MainComponent';
+CC_IMPORTS
 
 const Main = () => 
   REDUX_PROVIDER_OPENING

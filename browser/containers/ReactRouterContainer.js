@@ -17,10 +17,13 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
+const Body = props => 
+  <p className="rr-p">You can define routes by adding a resource below.</p>;
+
 export default connect(mapStateToProps, mapDispatchToProps)(props => {
   return (
     <Category name="React-Router" containerProps={props} checked={props.selected} toggleCheckbox={props.toggleCategory}>
-      <h3>React Router Form Goes Here</h3>
+      <Body/>
     </Category>
   );
 });

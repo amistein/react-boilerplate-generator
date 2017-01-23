@@ -6,7 +6,6 @@ const code = require('./generate_code');
 
 router.post('/code', function(req, res, next) {
   const randomFileName = utils.generateRandomString();
-  console.log('code:', code);
   code.generateCode(req.body, randomFileName)
   .then(() => {
     res.json({fileName: randomFileName + '.zip', projName: req.body.project.name});
